@@ -42,10 +42,9 @@
   --color-foreground: var(--foreground);
 
   /* Fonts */
-  --font-display: var(--font-safira-march), Georgia, serif;
   --font-heading: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   --font-body: var(--font-jost), Jost, system-ui, sans-serif;
-  --font-mono: var(--font-mono), "JetBrains Mono", monospace;
+  --font-mono-stack: var(--font-mono), "JetBrains Mono", monospace;
 
   /* Animation Easings */
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
@@ -90,10 +89,6 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
   font-weight: 600;
   letter-spacing: 0.05em;
-}
-
-.font-display {
-  font-family: var(--font-display);
 }
 
 .text-overline {

@@ -1,13 +1,10 @@
 import type { Metadata } from 'next';
-import { cormorantGaramond, jost, jetbrainsMono } from '@/lib/fonts';
+import { safiraMarch, cormorantGaramond, jost, jetbrainsMono } from '@/lib/fonts';
 import { siteConfig } from '@/lib/constants';
 import { Navigation } from '@/components/layout/Navigation';
 import { GrainOverlay } from '@/components/ui/GrainOverlay';
 import { CustomCursor } from '@/components/ui/CustomCursor';
 import './globals.css';
-
-// Note: Safira March is loaded separately when the font files are available
-// For now, the fallback serif in --font-display will be used
 
 export const metadata: Metadata = {
   title: {
@@ -53,6 +50,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`
+          ${safiraMarch.variable}
           ${cormorantGaramond.variable}
           ${jost.variable}
           ${jetbrainsMono.variable}

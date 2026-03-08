@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import { safiraMarch } from '@/lib/fonts';
 
 interface NameLockupProps {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'hero';
@@ -7,26 +8,38 @@ interface NameLockupProps {
 }
 
 const sizeMap = {
-  xs: 'text-sm leading-[0.85]',
-  sm: 'text-lg leading-[0.85]',
-  md: 'text-3xl leading-[0.85]',
-  lg: 'text-5xl leading-[0.85]',
-  hero: 'text-6xl md:text-7xl lg:text-[8rem] xl:text-[9rem] leading-[0.82]',
+  xs: 'text-[0.6rem]',
+  sm: 'text-sm',
+  md: 'text-2xl',
+  lg: 'text-4xl',
+  hero: 'text-5xl md:text-7xl lg:text-[7rem] xl:text-[8.5rem]',
+};
+
+// Negative top margin on "Pinderhughes" to overlap with "Elena"
+// Scaled per size so the two words share a visual line
+const overlapMap = {
+  xs: '-mt-[0.3em]',
+  sm: '-mt-[0.3em]',
+  md: '-mt-[0.3em]',
+  lg: '-mt-[0.3em]',
+  hero: '-mt-[0.3em]',
 };
 
 export function NameLockup({ size = 'md', className, color = 'cream' }: NameLockupProps) {
   return (
     <div
       className={cn(
-        'font-display uppercase tracking-[0.04em] select-none',
+        safiraMarch.className,
+        'uppercase select-none text-center',
         sizeMap[size],
         color === 'cream' ? 'text-warm-cream' : 'text-warm-black',
         className
       )}
+      style={{ lineHeight: 1, letterSpacing: '0.02em' }}
       aria-label="Elena Pinderhughes"
     >
       <span className="block">Elena</span>
-      <span className="block">Pinderhughes</span>
+      <span className={cn('block', overlapMap[size])}>Pinderhughes</span>
     </div>
   );
 }

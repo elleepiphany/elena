@@ -1,16 +1,13 @@
+import localFont from 'next/font/local';
 import { Cormorant_Garamond, Jost, JetBrains_Mono } from 'next/font/google';
 
-// NOTE: Safira March is a local font that should be loaded when available.
-// To enable it, uncomment the localFont import and safiraMarch export below,
-// and add the font files to /public/fonts/SafiraMarch/
-//
-// import localFont from 'next/font/local';
-// export const safiraMarch = localFont({
-//   src: [{ path: '../../public/fonts/SafiraMarch/SafiraMarch-Regular.woff2', weight: '400', style: 'normal' }],
-//   variable: '--font-safira-march',
-//   display: 'swap',
-//   fallback: ['Georgia', 'Times New Roman', 'serif'],
-// });
+// Display / Artist Name — Safira March
+export const safiraMarch = localFont({
+  src: [{ path: '../../public/fonts/SafiraMarch/SafiraMarch-Regular.ttf', weight: '400', style: 'normal' }],
+  variable: '--font-safira-march',
+  display: 'swap',
+  fallback: ['Georgia', 'Times New Roman', 'serif'],
+});
 
 // Headings — elegant serif with soul
 export const cormorantGaramond = Cormorant_Garamond({
