@@ -1,26 +1,281 @@
 @import "tailwindcss";
 
+/* =============================================
+   Elena Pinderhughes — Global Design Tokens
+   ============================================= */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary Palette */
+  --amber-honey: #F2A900;
+  --bronze-spice: #D95C14;
+  --midnight-violet: #3B1C32;
+  --brandy: #8B2615;
+  --dark-teal: #005C69;
+
+  /* Neutrals */
+  --warm-cream: #F5ECD7;
+  --warm-black: #1C1410;
+  --shadow-brown: #0D0705;
+
+  /* Supporting */
+  --gold-muted: #C9A96E;
+  --rose-dust: #B8907A;
+
+  /* Functional aliases */
+  --background: var(--warm-black);
+  --foreground: var(--warm-cream);
 }
 
 @theme inline {
+  /* Colors */
+  --color-amber-honey: var(--amber-honey);
+  --color-bronze-spice: var(--bronze-spice);
+  --color-midnight-violet: var(--midnight-violet);
+  --color-brandy: var(--brandy);
+  --color-dark-teal: var(--dark-teal);
+  --color-warm-cream: var(--warm-cream);
+  --color-warm-black: var(--warm-black);
+  --color-shadow-brown: var(--shadow-brown);
+  --color-gold-muted: var(--gold-muted);
+  --color-rose-dust: var(--rose-dust);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Fonts */
+  --font-display: var(--font-safira-march), Georgia, serif;
+  --font-heading: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-body: var(--font-jost), Jost, system-ui, sans-serif;
+  --font-mono: var(--font-mono), "JetBrains Mono", monospace;
+
+  /* Animation Easings */
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* =============================================
+   Base Styles
+   ============================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: auto; /* We handle scroll via JS */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--warm-black);
+  color: var(--warm-cream);
+  font-family: var(--font-body);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  line-height: 1.7;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* =============================================
+   Typography Base
+   ============================================= */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.text-overline {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+}
+
+.text-meta {
+  font-family: var(--font-mono);
+  font-weight: 300;
+  font-size: 0.625rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* =============================================
+   Selection
+   ============================================= */
+
+::selection {
+  background-color: var(--amber-honey);
+  color: var(--warm-black);
+}
+
+/* =============================================
+   Focus States (brand-styled)
+   ============================================= */
+
+:focus-visible {
+  outline: 2px solid var(--amber-honey);
+  outline-offset: 4px;
+}
+
+/* =============================================
+   Scrollbar
+   ============================================= */
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--shadow-brown);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-muted);
+  border-radius: 2px;
+}
+
+/* =============================================
+   Film Grain Overlay
+   ============================================= */
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+.grain-overlay {
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  animation: grain 8s steps(10) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain-overlay {
+    animation: none;
+  }
+}
+
+/* =============================================
+   Custom Cursor
+   ============================================= */
+
+.custom-cursor {
+  position: fixed;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--amber-honey);
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: difference;
+  transition: width 0.2s var(--ease-smooth), height 0.2s var(--ease-smooth), opacity 0.2s;
+  transform: translate(-50%, -50%);
+}
+
+.custom-cursor.hovering {
+  width: 40px;
+  height: 40px;
+  opacity: 0.6;
+}
+
+@media (pointer: coarse) {
+  .custom-cursor {
+    display: none;
+  }
+}
+
+/* =============================================
+   Horizontal Scroll Container
+   ============================================= */
+
+.horizontal-scroll-container {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  will-change: transform;
+}
+
+.scroll-panel {
+  flex-shrink: 0;
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* On mobile, revert to vertical scroll */
+@media (max-width: 767px) {
+  .horizontal-scroll-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .scroll-panel {
+    width: 100%;
+    min-height: auto;
+  }
+}
+
+/* =============================================
+   Skip to Content (Accessibility)
+   ============================================= */
+
+.skip-to-content {
+  position: fixed;
+  top: -100%;
+  left: 16px;
+  z-index: 100000;
+  background: var(--amber-honey);
+  color: var(--warm-black);
+  padding: 12px 24px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+
+.skip-to-content:focus {
+  top: 16px;
+}
+
+/* =============================================
+   Reduced Motion
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
