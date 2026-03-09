@@ -22,20 +22,13 @@ export function BioSection() {
   return (
     <div ref={ref} className="flex flex-col md:flex-row">
       {/* Panel 1: Portrait + Opening */}
-      <section className="scroll-panel relative flex items-end bg-shadow-brown p-8 md:p-16 lg:p-24">
+      <section className="scroll-panel relative flex items-start bg-shadow-brown p-8 md:p-16 lg:p-24">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(/images/gallery/elena-pinderhughes-1.jpeg)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-shadow-brown via-shadow-brown/40 to-transparent" />
         <div className="relative z-10 max-w-lg">
-          <motion.span
-            className="text-overline text-gold-muted/60 block mb-4"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-          >
-            About
-          </motion.span>
           <motion.h1
             className={`${safiraMarch.className} text-4xl md:text-6xl lg:text-7xl text-warm-cream uppercase mb-6`}
             initial={{ opacity: 0, y: 30 }}
@@ -56,7 +49,7 @@ export function BioSection() {
       </section>
 
       {/* Panel 2: Bio text with imagery */}
-      <section className="scroll-panel relative flex items-center bg-warm-black px-8 md:px-16 lg:px-24">
+      <section className="scroll-panel relative flex items-start bg-warm-black px-8 md:px-16 lg:px-24">
         <div className="max-w-2xl mx-auto">
           {bioText.paragraphs.map((paragraph, i) => (
             <motion.p
@@ -81,7 +74,7 @@ export function BioSection() {
       </section>
 
       {/* Panel 3: Collaborators */}
-      <section className="scroll-panel relative flex items-center justify-center bg-shadow-brown px-8 md:px-16 lg:px-24">
+      <section className="scroll-panel relative flex items-start justify-center bg-shadow-brown px-8 md:px-16 lg:px-24">
         <div className="text-center max-w-4xl">
           <motion.span
             className="text-overline text-gold-muted/60 block mb-8"
@@ -152,7 +145,7 @@ export function BioSection() {
       </section>
 
       {/* Panel 4: The Moment */}
-      <section className="scroll-panel relative flex items-center justify-center bg-midnight-violet px-8 md:px-16 lg:px-24">
+      <section className="scroll-panel relative flex items-start justify-center bg-midnight-violet px-8 md:px-16 lg:px-24">
         <motion.blockquote
           className="font-heading italic text-2xl md:text-4xl lg:text-5xl text-warm-cream/90 max-w-3xl text-center leading-snug"
           initial={{ opacity: 0, scale: 0.98 }}

@@ -9,7 +9,7 @@ interface UseHorizontalScrollOptions {
 }
 
 export function useHorizontalScroll(options: UseHorizontalScrollOptions = {}) {
-  const { speed = 1.2, ease = 0.08 } = options;
+  const { speed = 2, ease = 0.14 } = options;
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollTargetRef = useRef(0);
   const scrollCurrentRef = useRef(0);

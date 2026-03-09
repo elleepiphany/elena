@@ -22,7 +22,7 @@ export function TourDates({ limit, showViewAll = true }: TourDatesProps) {
   return (
     <section
       ref={ref}
-      className="scroll-panel relative flex items-center justify-center bg-shadow-brown px-8 md:px-16 lg:px-24"
+      className="scroll-panel relative flex items-start justify-center bg-shadow-brown px-8 md:px-16 lg:px-24"
       aria-label="Tour Dates"
     >
       <div className="w-full max-w-3xl">

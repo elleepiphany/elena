@@ -15,7 +15,7 @@ function PressCoveragePanel() {
   return (
     <section
       ref={ref}
-      className="scroll-panel relative flex items-center bg-warm-black px-8 md:px-16 lg:px-24"
+      className="scroll-panel relative flex items-start bg-warm-black px-8 md:px-16 lg:px-24"
       aria-label="Press Coverage"
     >
       <div className="w-full max-w-3xl mx-auto">
@@ -76,7 +76,7 @@ function EPKPanel() {
   return (
     <section
       ref={ref}
-      className="scroll-panel relative flex items-center justify-center bg-shadow-brown px-8 md:px-16 lg:px-24"
+      className="scroll-panel relative flex items-start justify-center bg-shadow-brown px-8 md:px-16 lg:px-24"
       aria-label="Press Kit"
     >
       <motion.div

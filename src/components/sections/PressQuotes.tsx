@@ -22,10 +22,10 @@ export function PressQuotes() {
   return (
     <section
       ref={ref}
-      className="scroll-panel relative flex items-center justify-center bg-warm-black px-8 md:px-16 lg:px-24"
+      className="scroll-panel relative flex items-start justify-center bg-warm-black px-8 md:px-16 lg:px-24"
       aria-label="Press"
     >
-      <div className="max-w-4xl text-center">
+      <div className="max-w-6xl w-full text-center">
         <motion.span
           className="text-overline text-gold-muted/60 block mb-12"
           initial={{ opacity: 0 }}
@@ -35,7 +35,7 @@ export function PressQuotes() {
           Press
         </motion.span>
 
-        <div className="relative min-h-[200px] flex items-center justify-center">
+        <div className="relative min-h-[50vh] flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}
@@ -45,7 +45,7 @@ export function PressQuotes() {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className="absolute"
             >
-              <blockquote className="font-heading italic text-2xl md:text-4xl lg:text-5xl text-warm-cream/90 leading-snug">
+              <blockquote className="font-heading italic text-xl md:text-3xl lg:text-4xl text-warm-cream/90 leading-snug">
                 &ldquo;{quotesWithQuotes[activeIndex]?.quote}&rdquo;
               </blockquote>
               <cite className="block mt-8 text-overline text-warm-cream/40 not-italic">

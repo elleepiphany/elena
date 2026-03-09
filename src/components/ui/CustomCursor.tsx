@@ -1,71 +1,42 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
+
+// SVG cursors rendered natively by the browser — zero JS lag
+const DOT_SIZE = 8;
+const HOVER_SIZE = 20;
+const COLOR = '%23F2A900'; // url-encoded #F2A900 (amber-honey)
+
+function makeCursorSvg(size: number, opacity = 1) {
+  const r = size / 2;
+  return `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${size}' height='${size}'%3E%3Ccircle cx='${r}' cy='${r}' r='${r}' fill='${COLOR}' opacity='${opacity}'/%3E%3C/svg%3E") ${r} ${r}, auto`;
+}
+
+const defaultCursor = makeCursorSvg(DOT_SIZE);
+const hoverCursor = makeCursorSvg(HOVER_SIZE, 0.6);
 
 export function CustomCursor() {
-  const cursorRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    // Don't show on touch devices
+    // Don't override on touch devices
     if (window.matchMedia('(pointer: coarse)').matches) return;
 
-    const cursor = cursorRef.current;
-    if (!cursor) return;
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    };
-
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (
-        target.tagName === 'A' ||
-        target.tagName === 'BUTTON' ||
-        target.closest('a') ||
-        target.closest('button') ||
-        target.dataset.hoverable
-      ) {
-        cursor.classList.add('hovering');
+    // Create a <style> element so cursor rules apply globally
+    const style = document.createElement('style');
+    style.textContent = `
+      *, *::before, *::after {
+        cursor: ${defaultCursor} !important;
       }
-    };
-
-    const handleMouseOut = () => {
-      cursor.classList.remove('hovering');
-    };
-
-    const animate = () => {
-      cursorX += (mouseX - cursorX) * 0.15;
-      cursorY += (mouseY - cursorY) * 0.15;
-      cursor.style.left = `${cursorX}px`;
-      cursor.style.top = `${cursorY}px`;
-      requestAnimationFrame(animate);
-    };
-
-    // Hide default cursor
-    document.body.style.cursor = 'none';
-    const links = document.querySelectorAll('a, button');
-    links.forEach((el) => {
-      (el as HTMLElement).style.cursor = 'none';
-    });
-
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseover', handleMouseOver);
-    window.addEventListener('mouseout', handleMouseOut);
-    requestAnimationFrame(animate);
+      a, button, a *, button *, [data-hoverable], [data-hoverable] * {
+        cursor: ${hoverCursor} !important;
+      }
+    `;
+    document.head.appendChild(style);
 
     return () => {
-      document.body.style.cursor = '';
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseover', handleMouseOver);
-      window.removeEventListener('mouseout', handleMouseOut);
+      document.head.removeChild(style);
     };
   }, []);
 
-  return <div ref={cursorRef} className="custom-cursor" aria-hidden="true" />;
+  // No DOM element needed — cursor is entirely CSS-driven
+  return null;
 }

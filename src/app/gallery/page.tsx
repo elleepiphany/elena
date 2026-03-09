@@ -24,7 +24,7 @@ function GalleryPanel() {
     <>
       <section
         ref={ref}
-        className="scroll-panel relative flex items-center bg-warm-black px-6 md:px-16 lg:px-24"
+        className="scroll-panel relative flex items-start bg-warm-black px-6 md:px-16 lg:px-24"
         style={!isMobile ? { width: `${Math.max(100, galleryImages.length * 35)}vw` } : undefined}
         aria-label="Gallery"
       >

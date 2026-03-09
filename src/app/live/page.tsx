@@ -27,7 +27,7 @@ function PastPerformancesPanel() {
   return (
     <section
       ref={ref}
-      className="scroll-panel relative flex items-center justify-center bg-warm-black px-8 md:px-16 lg:px-24"
+      className="scroll-panel relative flex items-start justify-center bg-warm-black px-8 md:px-16 lg:px-24"
       aria-label="Past Performances"
     >
       <div className="max-w-4xl text-center">
@@ -72,7 +72,7 @@ function BookingPanel() {
   return (
     <section
       ref={ref}
-      className="scroll-panel relative flex items-center justify-center bg-shadow-brown px-8 md:px-16 lg:px-24"
+      className="scroll-panel relative flex items-start justify-center bg-shadow-brown px-8 md:px-16 lg:px-24"
       aria-label="Booking"
     >
       <motion.div

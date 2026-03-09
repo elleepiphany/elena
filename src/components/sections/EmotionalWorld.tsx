@@ -39,7 +39,7 @@ export function EmotionalWorld() {
   return (
     <section
       ref={ref}
-      className="scroll-panel relative flex items-center justify-center overflow-hidden"
+      className="scroll-panel relative flex items-start justify-center overflow-hidden"
       style={{
         background: 'linear-gradient(135deg, var(--midnight-violet) 0%, var(--shadow-brown) 100%)',
       }}

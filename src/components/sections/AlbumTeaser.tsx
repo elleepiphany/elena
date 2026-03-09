@@ -12,7 +12,7 @@ export function AlbumTeaser() {
   return (
     <section
       ref={ref}
-      className="scroll-panel relative flex items-center bg-warm-black px-8 md:px-16 lg:px-24"
+      className="scroll-panel relative flex items-start bg-warm-black px-8 md:px-16 lg:px-24"
       aria-label="Debut Album"
     >
       <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20 w-full max-w-6xl mx-auto">

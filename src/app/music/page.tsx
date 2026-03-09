@@ -17,7 +17,7 @@ function DebutAlbumPanel() {
   return (
     <section
       ref={ref}
-      className="scroll-panel relative flex items-center bg-shadow-brown px-8 md:px-16 lg:px-24"
+      className="scroll-panel relative flex items-start bg-shadow-brown px-8 md:px-16 lg:px-24"
       aria-label="Debut Album"
     >
       <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20 w-full max-w-6xl mx-auto">
@@ -84,7 +84,7 @@ function DiscographyPanel() {
   return (
     <section
       ref={ref}
-      className="scroll-panel relative flex items-center bg-warm-black px-8 md:px-16 lg:px-24 overflow-y-auto"
+      className="scroll-panel relative flex items-start bg-warm-black px-8 md:px-16 lg:px-24 overflow-y-auto"
       aria-label="Discography"
     >
       <div className="w-full max-w-5xl mx-auto">
@@ -158,7 +158,7 @@ function VideoPanel() {
   return (
     <section
       ref={ref}
-      className="scroll-panel relative flex items-center justify-center bg-shadow-brown px-8 md:px-16 lg:px-24"
+      className="scroll-panel relative flex items-start justify-center bg-shadow-brown px-8 md:px-16 lg:px-24"
       aria-label="Video"
     >
       <div className="w-full max-w-4xl">
@@ -169,15 +169,6 @@ function VideoPanel() {
         >
           Watch
         </motion.span>
-
-        <motion.h2
-          className={`${safiraMarch.className} text-3xl md:text-4xl text-warm-cream mb-10`}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.1 }}
-        >
-          Video
-        </motion.h2>
 
         {/* Video placeholder */}
         <motion.div
