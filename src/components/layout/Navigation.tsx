@@ -104,7 +104,7 @@ export function Navigation() {
                   href={item.href}
                   onClick={() => setIsOpen(false)}
                   className={`
-                    font-heading text-2xl font-light tracking-[0.1em]
+                    font-body text-sm font-light uppercase tracking-[0.25em]
                     transition-colors duration-300
                     ${pathname === item.href
                       ? 'text-amber-honey'

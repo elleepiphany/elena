@@ -5,6 +5,7 @@ interface NameLockupProps {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'hero';
   className?: string;
   color?: 'cream' | 'dark';
+  align?: 'center' | 'left';
 }
 
 const sizeMap = {
@@ -25,12 +26,13 @@ const overlapMap = {
   hero: '-mt-[0.3em]',
 };
 
-export function NameLockup({ size = 'md', className, color = 'cream' }: NameLockupProps) {
+export function NameLockup({ size = 'md', className, color = 'cream', align = 'center' }: NameLockupProps) {
   return (
     <div
       className={cn(
         safiraMarch.className,
-        'uppercase select-none text-center',
+        'uppercase select-none',
+        align === 'left' ? 'text-left' : 'text-center',
         sizeMap[size],
         color === 'cream' ? 'text-warm-cream' : 'text-warm-black',
         className

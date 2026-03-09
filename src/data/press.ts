@@ -8,7 +8,7 @@ export const pressFeatures: PressFeature[] = [
     url: 'https://www.theguardian.com/music/2014/jul/30/christian-scott-atunde-adjuah-jazz-cafe-london-review',
     date: '2014-07-30',
     quote:
-      'The most exciting and creatively assured jazz flutist\nto have emerged in years.',
+      'The most exciting and creatively assured jazz flutist to have emerged in years.',
     type: 'feature',
   },
   {
@@ -18,7 +18,7 @@ export const pressFeatures: PressFeature[] = [
     url: '#',
     date: '2024-07-20',
     quote:
-      'A singular voice who moves between jazz, R&B,\nand hip-hop with a fluency that feels completely natural.',
+      'A singular voice who moves between jazz, R&B, and hip-hop with a fluency that feels completely natural.',
     type: 'feature',
   },
   {
@@ -28,7 +28,7 @@ export const pressFeatures: PressFeature[] = [
     url: '#',
     date: '2024-05-10',
     quote:
-      'Pinderhughes carries the weight and\nauthority of any lead voice in the room.',
+      'Pinderhughes carries the weight and authority of any lead voice in the room.',
     type: 'mention',
   },
   {

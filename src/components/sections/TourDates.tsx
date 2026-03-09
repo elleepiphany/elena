@@ -22,11 +22,21 @@ export function TourDates({ limit, showViewAll = true }: TourDatesProps) {
   return (
     <section
       ref={ref}
-      className="scroll-panel relative flex items-start justify-center bg-shadow-brown px-8 md:px-16 lg:px-24"
+      className="scroll-panel relative flex items-start justify-center bg-dark-teal px-8 md:px-16 lg:px-24 overflow-hidden"
       aria-label="Tour Dates"
       data-scrollable
     >
-      <div className="w-full max-w-3xl">
+      {/* Portrait photo — right side */}
+      <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-[35vw]">
+        <div
+          className="absolute inset-0 bg-cover bg-top"
+          style={{ backgroundImage: 'url(/images/gallery/ep4.avif)' }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-dark-teal/40 to-dark-teal" />
+        <div className="absolute inset-0 bg-gradient-to-t from-dark-teal/30 via-transparent to-dark-teal/15" />
+      </div>
+
+      <div className="relative z-10 w-full max-w-3xl">
         <motion.span
           className="text-overline text-gold-muted/60 block mb-4"
           initial={{ opacity: 0 }}

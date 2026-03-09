@@ -24,8 +24,8 @@ export function BioSection() {
       {/* Panel 1: Portrait + Opening */}
       <section className="scroll-panel relative flex items-end bg-shadow-brown p-8 md:p-16 lg:p-24">
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/images/gallery/ep1.avif)' }}
+          className="absolute inset-0 bg-cover bg-top"
+          style={{ backgroundImage: 'url(/images/gallery/ep10.png)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-shadow-brown via-shadow-brown/40 to-transparent" />
         <div className="relative z-10 max-w-lg">
@@ -63,21 +63,13 @@ export function BioSection() {
             </motion.p>
           ))}
         </div>
-
-        {/* Decorative image offset */}
-        <div className="hidden lg:block absolute right-12 top-1/4 w-48 h-72 opacity-30">
-          <div
-            className="w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: 'url(/images/gallery/ep7.avif)' }}
-          />
-        </div>
       </section>
 
       {/* Panel 3: Collaborators */}
-      <section className="scroll-panel relative flex items-start justify-center bg-shadow-brown px-8 md:px-16 lg:px-24">
-        <div className="text-center max-w-4xl">
+      <section className="scroll-panel relative flex items-start justify-center bg-dark-teal px-8 md:px-16 lg:px-24 overflow-hidden">
+        <div className="relative z-10 text-center max-w-4xl">
           <motion.span
-            className="text-overline text-gold-muted/60 block mb-8"
+            className="text-overline text-gold-muted/60 block mb-6"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
           >
@@ -85,7 +77,7 @@ export function BioSection() {
           </motion.span>
 
           {/* Constellation of names */}
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 mb-16">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 mb-20">
             {[
               { name: 'Herbie Hancock', size: 'text-2xl md:text-3xl' },
               { name: 'Chief Adjuah', size: 'text-xl md:text-2xl' },
@@ -116,45 +108,41 @@ export function BioSection() {
             ))}
           </div>
 
-          {/* Stages */}
+          {/* Horizontal photo — ep9 on stage, blended into teal */}
           <motion.div
-            className="flex flex-wrap justify-center gap-x-4 gap-y-1"
+            className="w-[80%] mx-auto h-[25vh] md:h-[30vh] relative overflow-hidden"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 1 }}
+            transition={{ delay: 1, duration: 1.2 }}
           >
-            {[
-              'Carnegie Hall',
-              'The Kennedy Center',
-              'The White House',
-              'Coachella',
-              'Monterey Jazz Festival',
-              'Montreux',
-              'Newport',
-              'North Sea Jazz',
-            ].map((venue) => (
-              <span
-                key={venue}
-                className="text-meta text-warm-cream/25"
-              >
-                {venue}
-              </span>
-            ))}
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: 'url(/images/gallery/ep9.avif)' }}
+            />
+            {/* Teal color overlay to neutralize red stage lighting */}
+            <div className="absolute inset-0 bg-dark-teal/40" />
+            {/* Gradient edges — blend into panel background on all sides */}
+            <div className="absolute inset-0 bg-gradient-to-r from-dark-teal via-transparent via-20% to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-l from-dark-teal via-transparent via-20% to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-dark-teal via-transparent via-30% to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-dark-teal via-transparent via-30% to-transparent" />
           </motion.div>
         </div>
       </section>
 
       {/* Panel 4: The Moment */}
-      <section className="scroll-panel relative flex items-end justify-center bg-midnight-violet px-8 md:px-16 lg:px-24">
-        <motion.blockquote
-          className="font-heading italic text-2xl md:text-4xl lg:text-5xl text-warm-cream/90 max-w-3xl text-center leading-snug"
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-        >
-          The world has heard what she can do in service of other artists&rsquo; visions;
-          what comes next will be entirely her&nbsp;own.
-        </motion.blockquote>
+      <section className="scroll-panel relative flex items-center justify-center bg-midnight-violet overflow-hidden">
+        <div className="relative z-10 px-8 md:px-16 lg:px-24 max-w-3xl text-center">
+          <motion.blockquote
+            className="font-heading italic text-2xl md:text-3xl lg:text-4xl text-warm-cream/90 leading-snug"
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            The world has heard what she can do in service of other artists&rsquo; visions;
+            what comes next will be entirely her&nbsp;own.
+          </motion.blockquote>
+        </div>
       </section>
     </div>
   );

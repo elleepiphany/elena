@@ -72,27 +72,44 @@ function BookingPanel() {
   return (
     <section
       ref={ref}
-      className="scroll-panel relative flex items-start justify-center bg-shadow-brown px-8 md:px-16 lg:px-24"
+      className="scroll-panel relative flex items-center bg-shadow-brown px-8 md:px-16 lg:px-24"
       aria-label="Booking"
     >
-      <motion.div
-        className="text-center max-w-lg"
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8 }}
-      >
-        <span className="text-overline text-gold-muted/60 block mb-4">Private Events</span>
-        <h2 className={`${safiraMarch.className} text-3xl md:text-4xl text-warm-cream mb-6`}>
-          Book Elena
-        </h2>
-        <p className="text-warm-cream/50 text-sm font-body font-light leading-relaxed mb-10">
-          Available for private events, festivals, corporate engagements, and special performances.
-          Elena brings an unforgettable musical experience to every stage.
-        </p>
-        <Button variant="primary" href="/contact">
-          Inquire
-        </Button>
-      </motion.div>
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-12 md:gap-16 w-full max-w-6xl mx-auto items-center">
+        {/* Inset framed photo */}
+        <motion.div
+          className="relative aspect-[4/3] md:aspect-auto md:h-[70vh] w-full overflow-hidden"
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="absolute inset-0 border border-gold-muted/20" />
+          <div
+            className="absolute inset-[1px] bg-cover bg-center"
+            style={{ backgroundImage: 'url(/images/gallery/ep7.avif)' }}
+          />
+        </motion.div>
+
+        {/* Booking CTA */}
+        <motion.div
+          className="text-center md:text-left max-w-sm"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <span className="text-overline text-gold-muted/60 block mb-4">Private Events</span>
+          <h2 className={`${safiraMarch.className} text-3xl md:text-4xl text-warm-cream mb-6`}>
+            Book Elena
+          </h2>
+          <p className="text-warm-cream/50 text-sm font-body font-light leading-relaxed mb-10">
+            Available for private events, festivals, corporate engagements, and special performances.
+            Elena brings an unforgettable musical experience to every stage.
+          </p>
+          <Button variant="primary" href="/contact">
+            Inquire
+          </Button>
+        </motion.div>
+      </div>
     </section>
   );
 }

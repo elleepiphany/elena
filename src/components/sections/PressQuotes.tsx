@@ -22,10 +22,25 @@ export function PressQuotes() {
   return (
     <section
       ref={ref}
-      className="scroll-panel relative flex items-start justify-center bg-warm-black px-8 md:px-16 lg:px-24"
+      className="scroll-panel relative flex items-start justify-center px-8 md:px-16 lg:px-24 overflow-hidden"
       aria-label="Press"
     >
-      <div className="max-w-6xl w-full text-center">
+      {/* Photo texture layer */}
+      <div className="absolute inset-0">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: 'url(/images/gallery/ep8.avif)' }}
+        />
+        <div className="absolute inset-0 bg-warm-black/60" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'radial-gradient(ellipse at 50% 40%, transparent 20%, var(--warm-black) 70%)',
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 max-w-6xl w-full text-center">
         <motion.span
           className="text-overline text-gold-muted/60 block mb-12"
           initial={{ opacity: 0 }}
@@ -45,7 +60,7 @@ export function PressQuotes() {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className="absolute"
             >
-              <blockquote className="font-heading italic text-xl md:text-3xl lg:text-4xl text-warm-cream/90 leading-snug whitespace-pre-line">
+              <blockquote className="font-heading italic text-xl md:text-3xl lg:text-4xl text-warm-cream/90 leading-snug" style={{ textWrap: 'balance' }}>
                 &ldquo;{quotesWithQuotes[activeIndex]?.quote}&rdquo;
               </blockquote>
               <cite className="block mt-8 text-overline text-warm-cream/40 not-italic">

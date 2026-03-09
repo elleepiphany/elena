@@ -7,32 +7,36 @@ import { EtherealShadow } from '@/components/ui/EtherealShadow';
 export function HeroSection() {
   return (
     <section
-      className="scroll-panel relative flex items-end justify-center bg-shadow-brown"
+      className="scroll-panel relative flex items-end justify-center overflow-hidden"
       aria-label="Hero"
+      style={{ backgroundColor: '#3D2832' }}
     >
       {/* Hero Image with Ken Burns effect */}
       <motion.div
         className="absolute inset-0"
-        initial={{ scale: 1.05 }}
+        initial={{ scale: 1.03 }}
         animate={{ scale: 1 }}
         transition={{ duration: 20, ease: 'linear', repeat: Infinity, repeatType: 'reverse' }}
       >
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: 'url(/images/hero/elena-pinderhughes-hero.jpeg)',
-          }}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/gallery/ep10.png"
+          alt="Elena Pinderhughes"
+          className="absolute left-1/2 -translate-x-1/2 w-auto max-w-none"
+          style={{ height: '140vh', top: '-5vh' }}
+          fetchPriority="high"
         />
       </motion.div>
 
-      {/* Warm gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-shadow-brown/80 via-shadow-brown/30 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-shadow-brown/60 via-transparent to-shadow-brown/20" />
+      {/* Warm gradient overlays — atmospheric vignette */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#3D2832] via-[#3D2832]/40 via-30% to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-l from-[#3D2832] via-[#3D2832]/40 via-30% to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#3D2832]/85 via-transparent to-[#3D2832]/20" />
 
       {/* Ethereal shadow atmospheric layer */}
-      <div className="absolute inset-0 z-[5] pointer-events-none opacity-60">
+      <div className="absolute inset-0 z-[5] pointer-events-none opacity-[0.18]">
         <EtherealShadow
-          color="rgba(139, 38, 21, 0.85)"
+          color="rgba(125, 74, 92, 0.85)"
           animation={{ scale: 60, speed: 40 }}
           noise={{ opacity: 0.4, scale: 1 }}
           sizing="fill"
@@ -40,7 +44,7 @@ export function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 px-6 pb-24 pt-24 md:p-16 lg:p-24 md:pb-24 text-center">
+      <div className="relative z-10 px-6 pb-24 pt-24 md:px-16 lg:px-24 md:pb-24 text-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}

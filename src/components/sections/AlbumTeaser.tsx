@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
 import { Button } from '@/components/ui/Button';
 import { DSPLinks } from '@/components/ui/DSPLinks';
+import { SmokeBackground } from '@/components/ui/SmokeBackground';
 import { safiraMarch } from '@/lib/fonts';
 
 export function AlbumTeaser() {
@@ -12,10 +13,15 @@ export function AlbumTeaser() {
   return (
     <section
       ref={ref}
-      className="scroll-panel relative flex items-start bg-warm-black px-8 md:px-16 lg:px-24"
+      className="scroll-panel relative flex items-start bg-warm-black px-8 md:px-16 lg:px-24 overflow-hidden"
       aria-label="Debut Album"
     >
-      <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20 w-full max-w-6xl mx-auto">
+      {/* Smoke animation background — sunset tones to match album artwork */}
+      <div className="absolute inset-0 opacity-50">
+        <SmokeBackground smokeColor="#E07020" />
+      </div>
+
+      <div className="relative z-10 flex flex-col md:flex-row items-center gap-12 md:gap-20 w-full max-w-6xl mx-auto">
         {/* Album Artwork */}
         <motion.div
           className="w-72 h-72 md:w-96 md:h-96 relative shrink-0 overflow-hidden"

@@ -77,11 +77,12 @@ function EPKPanel() {
   return (
     <section
       ref={ref}
-      className="scroll-panel relative flex items-start justify-center bg-shadow-brown px-8 md:px-16 lg:px-24"
+      className="scroll-panel relative flex items-start justify-center bg-midnight-violet px-8 md:px-16 lg:px-24"
       aria-label="Press Kit"
+      data-scrollable
     >
       <motion.div
-        className="text-center max-w-lg"
+        className="text-center max-w-3xl w-full pb-24"
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8 }}

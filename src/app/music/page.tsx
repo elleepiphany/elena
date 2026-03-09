@@ -17,7 +17,7 @@ function DebutAlbumPanel() {
   return (
     <section
       ref={ref}
-      className="scroll-panel relative flex items-start bg-shadow-brown px-8 md:px-16 lg:px-24"
+      className="scroll-panel relative flex items-start bg-midnight-violet px-8 md:px-16 lg:px-24"
       aria-label="Debut Album"
     >
       <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20 w-full max-w-6xl mx-auto">
@@ -70,9 +70,10 @@ function DiscographyPanel() {
   const { ref, isInView } = useInView({ threshold: 0.2 });
   const [filter, setFilter] = useState<FilterType>('all');
 
-  const filtered = filter === 'all'
+  const filtered = (filter === 'all'
     ? discography
-    : discography.filter(d => d.type === filter);
+    : discography.filter(d => d.type === filter)
+  ).toSorted((a, b) => b.year - a.year);
 
   const filters: { label: string; value: FilterType }[] = [
     { label: 'All', value: 'all' },
