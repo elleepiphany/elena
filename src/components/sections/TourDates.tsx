@@ -24,6 +24,7 @@ export function TourDates({ limit, showViewAll = true }: TourDatesProps) {
       ref={ref}
       className="scroll-panel relative flex items-start justify-center bg-shadow-brown px-8 md:px-16 lg:px-24"
       aria-label="Tour Dates"
+      data-scrollable
     >
       <div className="w-full max-w-3xl">
         <motion.span

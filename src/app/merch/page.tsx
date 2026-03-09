@@ -61,6 +61,7 @@ function ProductGridPanel() {
       ref={ref}
       className="scroll-panel relative flex items-start bg-warm-black px-8 md:px-16 lg:px-24"
       aria-label="All Products"
+      data-scrollable
     >
       <div className="w-full max-w-5xl mx-auto">
         <motion.span

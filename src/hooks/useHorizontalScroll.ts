@@ -15,6 +15,9 @@ export function useHorizontalScroll(options: UseHorizontalScrollOptions = {}) {
   const scrollCurrentRef = useRef(0);
   const rafRef = useRef<number>(0);
   const maxScrollRef = useRef(0);
+  const boundaryDeltaRef = useRef(0);
+  const lastScrollablePanelRef = useRef<HTMLElement | null>(null);
+  const lastBoundaryRef = useRef<'top' | 'bottom' | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [progress, setProgress] = useState(0);
 
@@ -71,9 +74,56 @@ export function useHorizontalScroll(options: UseHorizontalScrollOptions = {}) {
     if (isMobile) return;
 
     const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
+      // Check if cursor is over a panel that opts in to vertical scroll
+      const target = e.target as HTMLElement;
+      const scrollablePanel = target.closest('[data-scrollable]') as HTMLElement | null;
 
-      // Use deltaY for vertical scroll wheels, deltaX for horizontal trackpads
+      // Reset boundary accumulator when panel changes
+      if (scrollablePanel !== lastScrollablePanelRef.current) {
+        boundaryDeltaRef.current = 0;
+        lastBoundaryRef.current = null;
+        lastScrollablePanelRef.current = scrollablePanel;
+      }
+
+      if (scrollablePanel) {
+        const { scrollTop, scrollHeight, clientHeight } = scrollablePanel;
+        const hasOverflow = scrollHeight > clientHeight + 1;
+
+        if (hasOverflow) {
+          const isVerticalScroll = Math.abs(e.deltaY) > Math.abs(e.deltaX);
+
+          if (isVerticalScroll) {
+            const atTop = scrollTop <= 0;
+            const atBottom = scrollTop + clientHeight >= scrollHeight - 1;
+            const scrollingDown = e.deltaY > 0;
+            const scrollingUp = e.deltaY < 0;
+
+            // Not at boundary — let native vertical scroll happen
+            if (!(atTop && scrollingUp) && !(atBottom && scrollingDown)) {
+              boundaryDeltaRef.current = 0;
+              lastBoundaryRef.current = null;
+              return; // Don't preventDefault — native scroll handles it
+            }
+
+            // At a boundary — accumulate delta before switching to horizontal
+            const currentBoundary = atTop && scrollingUp ? 'top' : 'bottom';
+            if (currentBoundary !== lastBoundaryRef.current) {
+              boundaryDeltaRef.current = 0;
+              lastBoundaryRef.current = currentBoundary;
+            }
+            boundaryDeltaRef.current += Math.abs(e.deltaY);
+
+            if (boundaryDeltaRef.current < 50) {
+              e.preventDefault(); // Absorb momentum at boundary
+              return;
+            }
+            // Past threshold — fall through to horizontal scroll
+          }
+        }
+      }
+
+      // Default: convert wheel to horizontal scroll
+      e.preventDefault();
       const delta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
 
       scrollTargetRef.current = clamp(
@@ -116,16 +166,49 @@ export function useHorizontalScroll(options: UseHorizontalScrollOptions = {}) {
     if (isMobile) return;
 
     let touchStartX = 0;
+    let touchStartY = 0;
     let touchStartScroll = 0;
+    let touchDirection: 'horizontal' | 'vertical' | null = null;
+    let touchedScrollablePanel: HTMLElement | null = null;
 
     const handleTouchStart = (e: TouchEvent) => {
       touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
       touchStartScroll = scrollTargetRef.current;
+      touchDirection = null;
+
+      const target = e.target as HTMLElement;
+      touchedScrollablePanel = target.closest('[data-scrollable]') as HTMLElement | null;
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-      e.preventDefault();
       const deltaX = touchStartX - e.touches[0].clientX;
+      const deltaY = touchStartY - e.touches[0].clientY;
+
+      // Lock direction after 10px of movement
+      if (touchDirection === null && (Math.abs(deltaX) > 10 || Math.abs(deltaY) > 10)) {
+        touchDirection = Math.abs(deltaY) > Math.abs(deltaX) ? 'vertical' : 'horizontal';
+      }
+
+      // Vertical swipe over a scrollable panel — allow native scroll
+      if (touchDirection === 'vertical' && touchedScrollablePanel) {
+        const { scrollTop, scrollHeight, clientHeight } = touchedScrollablePanel;
+        const hasOverflow = scrollHeight > clientHeight + 1;
+
+        if (hasOverflow) {
+          const atTop = scrollTop <= 0;
+          const atBottom = scrollTop + clientHeight >= scrollHeight - 1;
+          const swipingUp = deltaY < 0;
+          const swipingDown = deltaY > 0;
+
+          if (!(atTop && swipingUp) && !(atBottom && swipingDown)) {
+            return; // Native vertical scroll
+          }
+        }
+      }
+
+      // Horizontal scroll (default)
+      e.preventDefault();
       scrollTargetRef.current = clamp(
         touchStartScroll + deltaX * 1.5,
         0,

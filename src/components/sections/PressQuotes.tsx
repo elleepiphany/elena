@@ -45,7 +45,7 @@ export function PressQuotes() {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className="absolute"
             >
-              <blockquote className="font-heading italic text-xl md:text-3xl lg:text-4xl text-warm-cream/90 leading-snug">
+              <blockquote className="font-heading italic text-xl md:text-3xl lg:text-4xl text-warm-cream/90 leading-snug whitespace-pre-line">
                 &ldquo;{quotesWithQuotes[activeIndex]?.quote}&rdquo;
               </blockquote>
               <cite className="block mt-8 text-overline text-warm-cream/40 not-italic">

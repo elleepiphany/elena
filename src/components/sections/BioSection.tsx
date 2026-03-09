@@ -22,10 +22,10 @@ export function BioSection() {
   return (
     <div ref={ref} className="flex flex-col md:flex-row">
       {/* Panel 1: Portrait + Opening */}
-      <section className="scroll-panel relative flex items-start bg-shadow-brown p-8 md:p-16 lg:p-24">
+      <section className="scroll-panel relative flex items-end bg-shadow-brown p-8 md:p-16 lg:p-24">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/images/gallery/elena-pinderhughes-1.jpeg)' }}
+          style={{ backgroundImage: 'url(/images/gallery/ep1.avif)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-shadow-brown via-shadow-brown/40 to-transparent" />
         <div className="relative z-10 max-w-lg">
@@ -49,7 +49,7 @@ export function BioSection() {
       </section>
 
       {/* Panel 2: Bio text with imagery */}
-      <section className="scroll-panel relative flex items-start bg-warm-black px-8 md:px-16 lg:px-24">
+      <section className="scroll-panel relative flex items-start bg-warm-black px-8 md:px-16 lg:px-24" data-scrollable>
         <div className="max-w-2xl mx-auto">
           {bioText.paragraphs.map((paragraph, i) => (
             <motion.p
@@ -68,7 +68,7 @@ export function BioSection() {
         <div className="hidden lg:block absolute right-12 top-1/4 w-48 h-72 opacity-30">
           <div
             className="w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: 'url(/images/gallery/elena-pinderhughes-2.jpeg)' }}
+            style={{ backgroundImage: 'url(/images/gallery/ep7.avif)' }}
           />
         </div>
       </section>
@@ -145,7 +145,7 @@ export function BioSection() {
       </section>
 
       {/* Panel 4: The Moment */}
-      <section className="scroll-panel relative flex items-start justify-center bg-midnight-violet px-8 md:px-16 lg:px-24">
+      <section className="scroll-panel relative flex items-end justify-center bg-midnight-violet px-8 md:px-16 lg:px-24">
         <motion.blockquote
           className="font-heading italic text-2xl md:text-4xl lg:text-5xl text-warm-cream/90 max-w-3xl text-center leading-snug"
           initial={{ opacity: 0, scale: 0.98 }}

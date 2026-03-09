@@ -207,6 +207,12 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
 }
 
+/* Panels opted in to vertical scroll */
+.scroll-panel[data-scrollable] {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 /* On mobile, revert to vertical scroll */
 @media (max-width: 767px) {
   .horizontal-scroll-container {

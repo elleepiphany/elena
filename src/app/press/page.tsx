@@ -17,8 +17,9 @@ function PressCoveragePanel() {
       ref={ref}
       className="scroll-panel relative flex items-start bg-warm-black px-8 md:px-16 lg:px-24"
       aria-label="Press Coverage"
+      data-scrollable
     >
-      <div className="w-full max-w-3xl mx-auto">
+      <div className="w-full max-w-3xl mx-auto pb-32">
         <motion.span
           className="text-overline text-gold-muted/60 block mb-4"
           initial={{ opacity: 0 }}

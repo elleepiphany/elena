@@ -84,8 +84,9 @@ function DiscographyPanel() {
   return (
     <section
       ref={ref}
-      className="scroll-panel relative flex items-start bg-warm-black px-8 md:px-16 lg:px-24 overflow-y-auto"
+      className="scroll-panel relative flex items-start bg-warm-black px-8 md:px-16 lg:px-24"
       aria-label="Discography"
+      data-scrollable
     >
       <div className="w-full max-w-5xl mx-auto">
         <motion.span
