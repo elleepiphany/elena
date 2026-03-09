@@ -6,6 +6,7 @@ import { TourDates } from '@/components/sections/TourDates';
 import { Button } from '@/components/ui/Button';
 import { tourDates } from '@/data/tour-dates';
 import { useInView } from '@/hooks/useInView';
+import { safiraMarch } from '@/lib/fonts';
 
 function PastPerformancesPanel() {
   const { ref, isInView } = useInView({ threshold: 0.2 });
@@ -39,7 +40,7 @@ function PastPerformancesPanel() {
         </motion.span>
 
         <motion.h2
-          className="font-safira text-3xl md:text-4xl text-warm-cream mb-16"
+          className={`${safiraMarch.className} text-3xl md:text-4xl text-warm-cream mb-16`}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.1 }}
@@ -81,7 +82,7 @@ function BookingPanel() {
         transition={{ duration: 0.8 }}
       >
         <span className="text-overline text-gold-muted/60 block mb-4">Private Events</span>
-        <h2 className="font-safira text-3xl md:text-4xl text-warm-cream mb-6">
+        <h2 className={`${safiraMarch.className} text-3xl md:text-4xl text-warm-cream mb-6`}>
           Book Elena
         </h2>
         <p className="text-warm-cream/50 text-sm font-body font-light leading-relaxed mb-10">

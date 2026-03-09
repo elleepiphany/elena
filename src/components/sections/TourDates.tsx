@@ -5,6 +5,7 @@ import { tourDates } from '@/data/tour-dates';
 import { formatDateCompact } from '@/lib/utils';
 import { useInView } from '@/hooks/useInView';
 import { Button } from '@/components/ui/Button';
+import { safiraMarch } from '@/lib/fonts';
 import Link from 'next/link';
 
 interface TourDatesProps {
@@ -34,7 +35,7 @@ export function TourDates({ limit, showViewAll = true }: TourDatesProps) {
         </motion.span>
 
         <motion.h2
-          className="font-safira text-3xl md:text-4xl text-warm-cream mb-12"
+          className={`${safiraMarch.className} text-3xl md:text-4xl text-warm-cream mb-12`}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.1, duration: 0.6 }}

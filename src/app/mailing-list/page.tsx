@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { NameLockup } from '@/components/brand/NameLockup';
 import { SocialLinks } from '@/components/ui/SocialLinks';
+import { safiraMarch } from '@/lib/fonts';
 
 export default function MailingListPage() {
   const [email, setEmail] = useState('');
@@ -33,7 +34,7 @@ export default function MailingListPage() {
       >
         <NameLockup size="md" className="mx-auto mb-12" />
 
-        <h1 className="font-safira text-2xl md:text-3xl text-warm-cream mb-4">
+        <h1 className={`${safiraMarch.className} text-2xl md:text-3xl text-warm-cream mb-4`}>
           Join the Inner Circle
         </h1>
 

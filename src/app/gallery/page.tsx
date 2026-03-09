@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { HorizontalScroll } from '@/components/layout/HorizontalScroll';
 import { useInView } from '@/hooks/useInView';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { safiraMarch } from '@/lib/fonts';
 
 const galleryImages = [
   { src: '/images/gallery/elena-pinderhughes-hero.jpeg', alt: 'Elena Pinderhughes performing', credit: 'Photographer TBD', aspect: 'portrait' },
@@ -37,7 +38,7 @@ function GalleryPanel() {
           </motion.span>
 
           <motion.h1
-            className="font-safira text-3xl md:text-4xl text-warm-cream mb-8 md:mb-12"
+            className={`${safiraMarch.className} text-3xl md:text-4xl text-warm-cream mb-8 md:mb-12`}
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1 }}

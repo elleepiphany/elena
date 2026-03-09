@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/Button';
 import { DSPLinks } from '@/components/ui/DSPLinks';
 import { discography } from '@/data/discography';
 import { useInView } from '@/hooks/useInView';
+import { safiraMarch } from '@/lib/fonts';
 
 type FilterType = 'all' | 'album' | 'film_tv' | 'featured';
 
@@ -22,13 +23,13 @@ function DebutAlbumPanel() {
       <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20 w-full max-w-6xl mx-auto">
         {/* Album artwork placeholder */}
         <motion.div
-          className="w-72 h-72 md:w-[400px] md:h-[400px] bg-midnight-violet/40 flex items-center justify-center relative shrink-0"
+          className="w-72 h-72 md:w-[400px] md:h-[400px] bg-midnight-violet/40 overflow-hidden relative shrink-0"
           initial={{ opacity: 0, x: -30 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
+          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(/images/album/ihyfit.jpg)' }} />
           <div className="absolute inset-0 border border-gold-muted/15" />
-          <span className="text-overline text-gold-muted/30">Album Artwork</span>
         </motion.div>
 
         <motion.div
@@ -38,8 +39,8 @@ function DebutAlbumPanel() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <span className="text-overline text-gold-muted">Debut Album</span>
-          <h1 className="font-safira text-4xl md:text-6xl text-warm-cream">
-            [Album Title]
+          <h1 className={`${safiraMarch.className} text-4xl md:text-6xl text-warm-cream`}>
+            IHYFIT
           </h1>
           <p className="text-meta text-warm-cream/40">2026</p>
 
@@ -96,7 +97,7 @@ function DiscographyPanel() {
         </motion.span>
 
         <motion.h2
-          className="font-safira text-3xl md:text-4xl text-warm-cream mb-8"
+          className={`${safiraMarch.className} text-3xl md:text-4xl text-warm-cream mb-8`}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.1 }}
@@ -170,7 +171,7 @@ function VideoPanel() {
         </motion.span>
 
         <motion.h2
-          className="font-safira text-3xl md:text-4xl text-warm-cream mb-10"
+          className={`${safiraMarch.className} text-3xl md:text-4xl text-warm-cream mb-10`}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.1 }}

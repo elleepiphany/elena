@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { NameLockup } from '@/components/brand/NameLockup';
+import { EtherealShadow } from '@/components/ui/EtherealShadow';
 
 export function HeroSection() {
   return (
@@ -27,6 +28,16 @@ export function HeroSection() {
       {/* Warm gradient overlays */}
       <div className="absolute inset-0 bg-gradient-to-r from-shadow-brown/80 via-shadow-brown/30 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-t from-shadow-brown/60 via-transparent to-shadow-brown/20" />
+
+      {/* Ethereal shadow atmospheric layer */}
+      <div className="absolute inset-0 z-[5] pointer-events-none opacity-60">
+        <EtherealShadow
+          color="rgba(139, 38, 21, 0.85)"
+          animation={{ scale: 60, speed: 40 }}
+          noise={{ opacity: 0.4, scale: 1 }}
+          sizing="fill"
+        />
+      </div>
 
       {/* Content */}
       <div className="relative z-10 px-6 pb-24 pt-24 md:p-16 lg:p-24 md:pb-24 text-center">

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
+import { safiraMarch } from '@/lib/fonts';
 
 const categories = ['Booking', 'Press', 'Management', 'General'];
 
@@ -42,7 +43,7 @@ export function ContactForm() {
         </motion.span>
 
         <motion.h2
-          className="font-safira text-3xl md:text-4xl text-warm-cream mb-12"
+          className={`${safiraMarch.className} text-3xl md:text-4xl text-warm-cream mb-12`}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.1 }}

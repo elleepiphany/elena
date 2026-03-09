@@ -6,6 +6,7 @@ import { MerchGrid } from '@/components/sections/MerchGrid';
 import { merchProducts } from '@/data/merch';
 import { useInView } from '@/hooks/useInView';
 import { Button } from '@/components/ui/Button';
+import { safiraMarch } from '@/lib/fonts';
 
 function FeaturedProductPanel() {
   const { ref, isInView } = useInView({ threshold: 0.3 });
@@ -36,7 +37,7 @@ function FeaturedProductPanel() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <span className="text-overline text-gold-muted/60">Featured</span>
-          <h1 className="font-safira text-3xl md:text-4xl text-warm-cream">
+          <h1 className={`${safiraMarch.className} text-3xl md:text-4xl text-warm-cream`}>
             {featured.name}
           </h1>
           <p className="text-meta text-warm-cream/40">${featured.price} {featured.currency}</p>
@@ -71,7 +72,7 @@ function ProductGridPanel() {
         </motion.span>
 
         <motion.h2
-          className="font-safira text-3xl md:text-4xl text-warm-cream mb-12"
+          className={`${safiraMarch.className} text-3xl md:text-4xl text-warm-cream mb-12`}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.1 }}

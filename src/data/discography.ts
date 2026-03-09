@@ -3,11 +3,11 @@ import { DiscographyItem } from '@/types';
 export const discography: DiscographyItem[] = [
   {
     id: '1',
-    title: '[Album Title]',
+    title: 'IHYFIT',
     artist: 'Elena Pinderhughes',
     role: 'Flute, Vocals, Songwriter',
     year: 2026,
-    artwork: '/images/album/debut-placeholder.jpg',
+    artwork: '/images/album/ihyfit.jpg',
     streamingUrl: '#',
     type: 'album',
   },
