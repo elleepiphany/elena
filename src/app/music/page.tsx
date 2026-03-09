@@ -38,7 +38,7 @@ function DebutAlbumPanel() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <span className="text-overline text-gold-muted">Debut Album</span>
-          <h1 className="font-heading italic text-4xl md:text-6xl text-warm-cream">
+          <h1 className="font-safira text-4xl md:text-6xl text-warm-cream">
             [Album Title]
           </h1>
           <p className="text-meta text-warm-cream/40">2026</p>
@@ -96,7 +96,7 @@ function DiscographyPanel() {
         </motion.span>
 
         <motion.h2
-          className="font-heading text-3xl md:text-4xl text-warm-cream mb-8"
+          className="font-safira text-3xl md:text-4xl text-warm-cream mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.1 }}
@@ -132,10 +132,11 @@ function DiscographyPanel() {
               transition={{ delay: 0.2 + i * 0.05 }}
             >
               <div className="aspect-square bg-midnight-violet/20 mb-3 relative overflow-hidden">
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-[1.03]"
+                  style={{ backgroundImage: `url(${item.artwork})` }}
+                />
                 <div className="absolute inset-0 border border-warm-cream/5 group-hover:border-warm-cream/15 transition-colors duration-500" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-meta text-warm-cream/15">{item.type}</span>
-                </div>
               </div>
               <h3 className="text-warm-cream text-sm font-body font-light leading-tight">
                 {item.title}
@@ -169,7 +170,7 @@ function VideoPanel() {
         </motion.span>
 
         <motion.h2
-          className="font-heading text-3xl md:text-4xl text-warm-cream mb-10"
+          className="font-safira text-3xl md:text-4xl text-warm-cream mb-10"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.1 }}

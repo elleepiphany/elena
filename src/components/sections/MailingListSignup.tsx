@@ -32,7 +32,7 @@ export function MailingListSignup() {
         </motion.span>
 
         <motion.h2
-          className="font-heading italic text-3xl md:text-4xl text-warm-cream mb-6"
+          className="font-safira text-3xl md:text-4xl text-warm-cream mb-6"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.1 }}

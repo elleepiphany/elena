@@ -6,7 +6,7 @@ import { NameLockup } from '@/components/brand/NameLockup';
 export function HeroSection() {
   return (
     <section
-      className="scroll-panel relative flex items-end justify-start bg-shadow-brown"
+      className="scroll-panel relative flex items-end justify-center bg-shadow-brown"
       aria-label="Hero"
     >
       {/* Hero Image with Ken Burns effect */}
@@ -29,7 +29,7 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-t from-shadow-brown/60 via-transparent to-shadow-brown/20" />
 
       {/* Content */}
-      <div className="relative z-10 p-8 md:p-16 lg:p-24 pb-28 md:pb-24">
+      <div className="relative z-10 px-6 pb-24 pt-24 md:p-16 lg:p-24 md:pb-24 text-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -39,7 +39,7 @@ export function HeroSection() {
         </motion.div>
 
         <motion.p
-          className="font-heading italic text-warm-cream/70 text-lg md:text-xl mt-6 tracking-[0.05em]"
+          className="font-heading italic text-warm-cream/70 text-base md:text-xl mt-4 md:mt-6 tracking-[0.05em]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}

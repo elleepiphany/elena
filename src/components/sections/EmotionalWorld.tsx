@@ -45,7 +45,8 @@ export function EmotionalWorld() {
       }}
       aria-label="Emotional World"
     >
-      <div className="relative w-full h-full">
+      {/* Desktop: absolute-positioned constellation */}
+      <div className="relative w-full h-full hidden md:block">
         {emotionalWords.map((item, i) => {
           const pos = wordPositions[i % wordPositions.length];
           return (
@@ -86,6 +87,31 @@ export function EmotionalWorld() {
             </motion.span>
           );
         })}
+      </div>
+
+      {/* Mobile: flowing word cloud */}
+      <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-3 px-4 md:hidden">
+        {emotionalWords.map((item, i) => (
+          <motion.span
+            key={item.word}
+            className={`
+              font-heading italic select-none
+              ${item.highlighted ? 'text-gold-muted text-2xl' : 'text-warm-cream/20 text-base'}
+            `}
+            initial={{ opacity: 0, y: 15 }}
+            animate={isInView ? {
+              opacity: item.highlighted ? 0.9 : 0.2,
+              y: 0,
+            } : {}}
+            transition={{
+              duration: 0.6,
+              delay: i * 0.04,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            {item.word}
+          </motion.span>
+        ))}
       </div>
     </section>
   );

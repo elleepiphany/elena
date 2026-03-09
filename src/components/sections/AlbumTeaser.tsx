@@ -35,7 +35,7 @@ export function AlbumTeaser() {
         >
           <span className="text-overline text-gold-muted">Debut Album</span>
 
-          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-warm-cream font-semibold italic">
+          <h2 className="font-safira text-4xl md:text-5xl lg:text-6xl text-warm-cream">
             [Album Title]
           </h2>
 

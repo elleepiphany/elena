@@ -33,7 +33,7 @@ export default function MailingListPage() {
       >
         <NameLockup size="md" className="mx-auto mb-12" />
 
-        <h1 className="font-heading italic text-2xl md:text-3xl text-warm-cream mb-4">
+        <h1 className="font-safira text-2xl md:text-3xl text-warm-cream mb-4">
           Join the Inner Circle
         </h1>
 

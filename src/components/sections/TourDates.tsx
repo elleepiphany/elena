@@ -34,7 +34,7 @@ export function TourDates({ limit, showViewAll = true }: TourDatesProps) {
         </motion.span>
 
         <motion.h2
-          className="font-heading text-3xl md:text-4xl text-warm-cream mb-12"
+          className="font-safira text-3xl md:text-4xl text-warm-cream mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.1, duration: 0.6 }}
