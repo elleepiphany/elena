@@ -71,7 +71,7 @@ function DiscographyPanel() {
   const [filter, setFilter] = useState<FilterType>('all');
 
   const filtered = filter === 'all'
-    ? discography.filter(d => d.type !== 'album')
+    ? discography
     : discography.filter(d => d.type === filter);
 
   const filters: { label: string; value: FilterType }[] = [

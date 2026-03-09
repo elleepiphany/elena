@@ -63,7 +63,7 @@ export const discography: DiscographyItem[] = [
   },
   {
     id: '7',
-    title: 'The Imagined Savior Is Far Easier to Paint',
+    title: 'the imagined savior is far easier to paint',
     artist: 'Ambrose Akinmusire',
     role: 'Flute',
     year: 2014,
