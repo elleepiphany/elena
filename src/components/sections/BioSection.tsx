@@ -23,9 +23,9 @@ export function BioSection() {
   return (
     <div ref={ref} className="flex flex-col md:flex-row">
       {/* Panel 1: Portrait + Opening */}
-      <section className="scroll-panel relative flex items-end bg-shadow-brown p-8 md:p-16 lg:p-24">
+      <section className="scroll-panel relative flex items-end bg-shadow-brown p-8 md:p-16 lg:p-24" style={{ minHeight: '85vh' }}>
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-top md:bg-center"
           style={{ backgroundImage: 'url(/images/gallery/ep3.avif)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-shadow-brown via-shadow-brown/50 to-transparent" />
@@ -33,7 +33,7 @@ export function BioSection() {
         <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-shadow-brown/70 via-shadow-brown/30 to-transparent" />
         <div className="relative z-10 max-w-lg">
           <motion.h1
-            className={`${safiraMarch.className} text-3xl md:text-4xl lg:text-5xl text-warm-cream uppercase mb-6`}
+            className={`${safiraMarch.className} text-2xl md:text-4xl lg:text-5xl text-warm-cream uppercase mb-6`}
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -146,7 +146,8 @@ export function BioSection() {
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           >
-            The world has heard what she can do in service of other artists&rsquo; visions;
+            The world has heard what she can do<br />
+            in service of other artists&rsquo; visions;<br />
             what comes next will be entirely her&nbsp;own.
           </motion.blockquote>
         </div>

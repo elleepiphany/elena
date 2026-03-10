@@ -9,7 +9,7 @@ interface UseHorizontalScrollOptions {
 }
 
 export function useHorizontalScroll(options: UseHorizontalScrollOptions = {}) {
-  const { speed = 2, ease = 0.14 } = options;
+  const { speed = 2.5, ease = 0.14 } = options;
   const containerRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
   const panelCounterRef = useRef<HTMLSpanElement>(null);

@@ -23,7 +23,7 @@ export function HeroSection() {
         <img
           src="/images/gallery/ep10-2.jpg"
           alt="Elena Pinderhughes"
-          className="absolute inset-0 w-full h-full object-cover object-top"
+          className="absolute inset-0 w-full h-full object-cover object-[center_5%]"
           fetchPriority="high"
         />
       </motion.div>
