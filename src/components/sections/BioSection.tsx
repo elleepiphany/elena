@@ -33,7 +33,7 @@ export function BioSection() {
         <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-shadow-brown/70 via-shadow-brown/30 to-transparent" />
         <div className="relative z-10 max-w-lg">
           <motion.h1
-            className={`${safiraMarch.className} text-4xl md:text-6xl lg:text-7xl text-warm-cream uppercase mb-6`}
+            className={`${safiraMarch.className} text-3xl md:text-4xl lg:text-5xl text-warm-cream uppercase mb-6`}
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -42,6 +42,7 @@ export function BioSection() {
           </motion.h1>
           <motion.p
             className="font-heading italic text-xl md:text-2xl text-warm-cream/80 leading-relaxed"
+            style={{ textWrap: 'balance' }}
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.4, duration: 0.8 }}

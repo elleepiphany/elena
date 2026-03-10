@@ -43,6 +43,7 @@ export function MailingListSignup() {
 
         <motion.p
           className="text-warm-cream/50 text-sm font-body font-light mb-10 leading-relaxed"
+          style={{ textWrap: 'balance' }}
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.2 }}
@@ -99,7 +100,15 @@ export function MailingListSignup() {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.6 }}
         >
-          Management &amp; Booking: info@elenapinderhughes.com
+          Management &amp; Booking:{' '}
+          <a
+            href="https://secondsonproductions.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-warm-cream/40 hover:text-amber-honey transition-colors duration-300"
+          >
+            Second Son Productions
+          </a>
         </motion.p>
       </div>
     </section>

@@ -57,7 +57,7 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          Flutist. Vocalist. Composer.
+          Flutist. Vocalist. Composer. Songwriter.
         </motion.p>
       </div>
 
