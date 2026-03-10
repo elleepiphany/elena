@@ -8,7 +8,7 @@ interface HorizontalScrollProps {
 }
 
 export function HorizontalScroll({ children }: HorizontalScrollProps) {
-  const { containerRef, progressBarRef, isMobile } = useHorizontalScroll();
+  const { containerRef, progressBarRef, panelCounterRef, isMobile } = useHorizontalScroll();
 
   if (isMobile) {
     return (
@@ -35,16 +35,24 @@ export function HorizontalScroll({ children }: HorizontalScrollProps) {
           {children}
         </div>
       </div>
-      {/* Progress bar — updated via ref, no React re-renders */}
-      <div
-        className="fixed bottom-0 left-0 right-0 z-50 h-[2px]"
-        style={{ backgroundColor: 'rgba(28, 20, 16, 0.3)' }}
-      >
+      {/* Progress bar + panel counter — updated via refs, no React re-renders */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 flex items-center">
         <div
-          ref={progressBarRef}
-          className="h-full bg-amber-honey"
-          style={{ width: '0%', willChange: 'width' }}
-        />
+          className="flex-1 h-[2px]"
+          style={{ backgroundColor: 'rgba(28, 20, 16, 0.3)' }}
+        >
+          <div
+            ref={progressBarRef}
+            className="h-full bg-amber-honey"
+            style={{ width: '0%', willChange: 'width' }}
+          />
+        </div>
+        <span
+          ref={panelCounterRef}
+          className="text-[10px] uppercase tracking-[0.2em] font-body font-light text-warm-cream/30 px-4 py-1 shrink-0"
+        >
+          1 / 1
+        </span>
       </div>
     </>
   );

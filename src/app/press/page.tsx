@@ -114,7 +114,7 @@ function EPKPanel() {
 export default function PressPage() {
   return (
     <HorizontalScroll>
-      <PressQuotes />
+      <PressQuotes showScrollHint />
       <PressCoveragePanel />
       <EPKPanel />
     </HorizontalScroll>

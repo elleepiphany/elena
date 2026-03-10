@@ -117,7 +117,7 @@ function BookingPanel() {
 export default function LivePage() {
   return (
     <HorizontalScroll>
-      <TourDates showViewAll={false} />
+      <TourDates showViewAll={false} showScrollHint />
       <PastPerformancesPanel />
       <BookingPanel />
     </HorizontalScroll>

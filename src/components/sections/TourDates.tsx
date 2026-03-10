@@ -7,13 +7,15 @@ import { useInView } from '@/hooks/useInView';
 import { Button } from '@/components/ui/Button';
 import { safiraMarch } from '@/lib/fonts';
 import Link from 'next/link';
+import { ScrollHint } from '@/components/ui/ScrollHint';
 
 interface TourDatesProps {
   limit?: number;
   showViewAll?: boolean;
+  showScrollHint?: boolean;
 }
 
-export function TourDates({ limit, showViewAll = true }: TourDatesProps) {
+export function TourDates({ limit, showViewAll = true, showScrollHint = false }: TourDatesProps) {
   const { ref, isInView } = useInView({ threshold: 0.2 });
   const upcomingDates = tourDates
     .filter((d) => d.status === 'upcoming')
@@ -26,7 +28,14 @@ export function TourDates({ limit, showViewAll = true }: TourDatesProps) {
       aria-label="Tour Dates"
       data-scrollable
     >
-      {/* Portrait photo — right side */}
+      {/* Portrait photo — mobile: full background, desktop: right panel */}
+      <div className="lg:hidden absolute inset-0">
+        <div
+          className="absolute inset-0 bg-cover bg-top"
+          style={{ backgroundImage: 'url(/images/gallery/ep4.avif)' }}
+        />
+        <div className="absolute inset-0 bg-dark-teal/75" />
+      </div>
       <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-[35vw]">
         <div
           className="absolute inset-0 bg-cover bg-top"
@@ -121,6 +130,7 @@ export function TourDates({ limit, showViewAll = true }: TourDatesProps) {
           </motion.div>
         )}
       </div>
+      {showScrollHint && <ScrollHint />}
     </section>
   );
 }

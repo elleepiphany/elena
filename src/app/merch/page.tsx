@@ -7,6 +7,7 @@ import { merchProducts } from '@/data/merch';
 import { useInView } from '@/hooks/useInView';
 import { Button } from '@/components/ui/Button';
 import { safiraMarch } from '@/lib/fonts';
+import { ScrollHint } from '@/components/ui/ScrollHint';
 
 function FeaturedProductPanel() {
   const { ref, isInView } = useInView({ threshold: 0.3 });
@@ -49,6 +50,7 @@ function FeaturedProductPanel() {
           </Button>
         </motion.div>
       </div>
+      <ScrollHint />
     </section>
   );
 }

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
 import { safiraMarch } from '@/lib/fonts';
+import { ScrollHint } from '@/components/ui/ScrollHint';
 
 const bioText = {
   opening:
@@ -28,6 +29,8 @@ export function BioSection() {
           style={{ backgroundImage: 'url(/images/gallery/ep3.avif)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-shadow-brown via-shadow-brown/50 to-transparent" />
+        {/* Dark gradient behind nav for legibility on this bright image */}
+        <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-shadow-brown/70 via-shadow-brown/30 to-transparent" />
         <div className="relative z-10 max-w-lg">
           <motion.h1
             className={`${safiraMarch.className} text-4xl md:text-6xl lg:text-7xl text-warm-cream uppercase mb-6`}
@@ -46,6 +49,7 @@ export function BioSection() {
             {bioText.opening}
           </motion.p>
         </div>
+        <ScrollHint />
       </section>
 
       {/* Panel 2: Bio text with imagery */}

@@ -12,6 +12,7 @@ export function useHorizontalScroll(options: UseHorizontalScrollOptions = {}) {
   const { speed = 2, ease = 0.14 } = options;
   const containerRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
+  const panelCounterRef = useRef<HTMLSpanElement>(null);
   const scrollTargetRef = useRef(0);
   const scrollCurrentRef = useRef(0);
   const rafRef = useRef<number>(0);
@@ -57,6 +58,15 @@ export function useHorizontalScroll(options: UseHorizontalScrollOptions = {}) {
         if (progressBarRef.current && maxScrollRef.current > 0) {
           const p = scrollCurrentRef.current / maxScrollRef.current;
           progressBarRef.current.style.width = `${p * 100}%`;
+        }
+
+        // Update panel counter via DOM
+        if (panelCounterRef.current) {
+          const panelWidth = window.innerWidth;
+          const panels = containerRef.current.querySelectorAll('.scroll-panel');
+          const current = Math.round(scrollCurrentRef.current / panelWidth) + 1;
+          const total = panels.length;
+          panelCounterRef.current.textContent = `${current} / ${total}`;
         }
       }
 
@@ -241,6 +251,7 @@ export function useHorizontalScroll(options: UseHorizontalScrollOptions = {}) {
   return {
     containerRef,
     progressBarRef,
+    panelCounterRef,
     isMobile,
     scrollTo,
     scrollToPanel,

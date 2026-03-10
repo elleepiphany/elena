@@ -5,8 +5,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { pressFeatures } from '@/data/press';
 import { useInView } from '@/hooks/useInView';
 import Link from 'next/link';
+import { ScrollHint } from '@/components/ui/ScrollHint';
 
-export function PressQuotes() {
+interface PressQuotesProps {
+  showScrollHint?: boolean;
+}
+
+export function PressQuotes({ showScrollHint = false }: PressQuotesProps) {
   const { ref, isInView } = useInView({ threshold: 0.3 });
   const quotesWithQuotes = pressFeatures.filter((p) => p.quote);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -98,6 +103,7 @@ export function PressQuotes() {
           </Link>
         </motion.div>
       </div>
+      {showScrollHint && <ScrollHint />}
     </section>
   );
 }

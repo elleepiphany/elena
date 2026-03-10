@@ -8,6 +8,7 @@ import { DSPLinks } from '@/components/ui/DSPLinks';
 import { discography } from '@/data/discography';
 import { useInView } from '@/hooks/useInView';
 import { safiraMarch } from '@/lib/fonts';
+import { ScrollHint } from '@/components/ui/ScrollHint';
 
 type FilterType = 'all' | 'album' | 'film_tv' | 'featured';
 
@@ -62,6 +63,7 @@ function DebutAlbumPanel() {
           <DSPLinks className="mt-2" />
         </motion.div>
       </div>
+      <ScrollHint />
     </section>
   );
 }

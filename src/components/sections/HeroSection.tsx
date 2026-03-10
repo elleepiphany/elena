@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { NameLockup } from '@/components/brand/NameLockup';
 import { EtherealShadow } from '@/components/ui/EtherealShadow';
+import { ScrollHint } from '@/components/ui/ScrollHint';
 
 export function HeroSection() {
   return (
@@ -60,21 +61,7 @@ export function HeroSection() {
         </motion.p>
       </div>
 
-      {/* Scroll hint — positioned against section, not content block */}
-      <motion.div
-        className="absolute bottom-6 right-8 md:right-16 lg:right-24 z-10 hidden md:flex flex-col items-center gap-2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-      >
-        <span className="text-meta text-warm-cream/30">Scroll</span>
-        <motion.div
-          className="w-[1px] h-8 bg-warm-cream/20"
-          animate={{ scaleY: [0, 1, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          style={{ transformOrigin: 'top' }}
-        />
-      </motion.div>
+      <ScrollHint />
     </section>
   );
 }

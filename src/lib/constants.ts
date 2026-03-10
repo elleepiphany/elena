@@ -39,9 +39,9 @@ export const navigation = [
 ] as const;
 
 export const socialLinks = [
-  { platform: 'Instagram', url: 'https://instagram.com/elenapinderhughes', icon: 'instagram' },
-  { platform: 'Twitter/X', url: 'https://x.com/epinderhughes', icon: 'twitter' },
-  { platform: 'YouTube', url: 'https://youtube.com/@elenapinderhughes', icon: 'youtube' },
+  { platform: 'Instagram', url: 'https://instagram.com/iamelena', icon: 'instagram' },
+  { platform: 'Threads', url: 'https://threads.com/iamelena', icon: 'threads' },
+  { platform: 'YouTube', url: 'https://www.youtube.com/results?search_query=elena+pinderhughes', icon: 'youtube' },
   { platform: 'TikTok', url: 'https://tiktok.com/@elenapinderhughes', icon: 'tiktok' },
 ] as const;
 
