@@ -21,7 +21,7 @@ export function HeroSection() {
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/gallery/ep10.png"
+          src="/images/gallery/ep10-2.jpg"
           alt="Elena Pinderhughes"
           className="absolute inset-0 w-full h-full object-cover object-top"
           fetchPriority="high"
