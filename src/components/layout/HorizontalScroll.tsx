@@ -2,14 +2,13 @@
 
 import { ReactNode } from 'react';
 import { useHorizontalScroll } from '@/hooks/useHorizontalScroll';
-import { ScrollProgress } from './ScrollProgress';
 
 interface HorizontalScrollProps {
   children: ReactNode;
 }
 
 export function HorizontalScroll({ children }: HorizontalScrollProps) {
-  const { containerRef, progress, isMobile } = useHorizontalScroll();
+  const { containerRef, progressBarRef, isMobile } = useHorizontalScroll();
 
   if (isMobile) {
     return (
@@ -31,12 +30,22 @@ export function HorizontalScroll({ children }: HorizontalScrollProps) {
         <div
           ref={containerRef}
           className="horizontal-scroll-container"
-          style={{ height: '100vh', alignItems: 'stretch' }}
+          style={{ height: '100vh', alignItems: 'stretch', willChange: 'transform' }}
         >
           {children}
         </div>
       </div>
-      <ScrollProgress progress={progress} />
+      {/* Progress bar — updated via ref, no React re-renders */}
+      <div
+        className="fixed bottom-0 left-0 right-0 z-50 h-[2px]"
+        style={{ backgroundColor: 'rgba(28, 20, 16, 0.3)' }}
+      >
+        <div
+          ref={progressBarRef}
+          className="h-full bg-amber-honey"
+          style={{ width: '0%', willChange: 'width' }}
+        />
+      </div>
     </>
   );
 }

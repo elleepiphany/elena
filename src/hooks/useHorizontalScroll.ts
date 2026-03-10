@@ -11,6 +11,7 @@ interface UseHorizontalScrollOptions {
 export function useHorizontalScroll(options: UseHorizontalScrollOptions = {}) {
   const { speed = 2, ease = 0.14 } = options;
   const containerRef = useRef<HTMLDivElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
   const scrollTargetRef = useRef(0);
   const scrollCurrentRef = useRef(0);
   const rafRef = useRef<number>(0);
@@ -19,7 +20,6 @@ export function useHorizontalScroll(options: UseHorizontalScrollOptions = {}) {
   const lastScrollablePanelRef = useRef<HTMLElement | null>(null);
   const lastBoundaryRef = useRef<'top' | 'bottom' | null>(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -53,9 +53,10 @@ export function useHorizontalScroll(options: UseHorizontalScrollOptions = {}) {
       if (containerRef.current) {
         containerRef.current.style.transform = `translateX(${-scrollCurrentRef.current}px)`;
 
-        // Update progress
-        if (maxScrollRef.current > 0) {
-          setProgress(scrollCurrentRef.current / maxScrollRef.current);
+        // Update progress bar directly via DOM — no React re-render
+        if (progressBarRef.current && maxScrollRef.current > 0) {
+          const p = scrollCurrentRef.current / maxScrollRef.current;
+          progressBarRef.current.style.width = `${p * 100}%`;
         }
       }
 
@@ -239,7 +240,7 @@ export function useHorizontalScroll(options: UseHorizontalScrollOptions = {}) {
 
   return {
     containerRef,
-    progress,
+    progressBarRef,
     isMobile,
     scrollTo,
     scrollToPanel,

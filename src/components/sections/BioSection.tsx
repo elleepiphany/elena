@@ -24,10 +24,10 @@ export function BioSection() {
       {/* Panel 1: Portrait + Opening */}
       <section className="scroll-panel relative flex items-end bg-shadow-brown p-8 md:p-16 lg:p-24">
         <div
-          className="absolute inset-0 bg-cover bg-top"
-          style={{ backgroundImage: 'url(/images/gallery/ep10.png)' }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: 'url(/images/gallery/ep3.avif)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-shadow-brown via-shadow-brown/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-shadow-brown via-shadow-brown/50 to-transparent" />
         <div className="relative z-10 max-w-lg">
           <motion.h1
             className={`${safiraMarch.className} text-4xl md:text-6xl lg:text-7xl text-warm-cream uppercase mb-6`}
@@ -77,7 +77,7 @@ export function BioSection() {
           </motion.span>
 
           {/* Constellation of names */}
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 mb-20">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 mb-8">
             {[
               { name: 'Herbie Hancock', size: 'text-2xl md:text-3xl' },
               { name: 'Chief Adjuah', size: 'text-xl md:text-2xl' },
@@ -108,24 +108,26 @@ export function BioSection() {
             ))}
           </div>
 
-          {/* Horizontal photo — ep9 on stage, blended into teal */}
+          {/* Photo — ep12, background-removed, blended into teal */}
           <motion.div
-            className="w-[80%] mx-auto h-[25vh] md:h-[30vh] relative overflow-hidden"
+            className="relative flex items-center justify-center -mt-4"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 1, duration: 1.2 }}
           >
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: 'url(/images/gallery/ep9.avif)' }}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/gallery/ep12.png"
+              alt="Elena Pinderhughes"
+              className="w-[95vw] md:w-[75vw] max-w-none"
+              style={{
+                maskImage: 'linear-gradient(to bottom, transparent 0%, black 8%, black 75%, transparent 100%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)',
+                maskComposite: 'intersect',
+                WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 8%, black 75%, transparent 100%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)',
+                WebkitMaskComposite: 'destination-in',
+                filter: 'brightness(0.88) drop-shadow(0 0 40px var(--dark-teal))',
+              }}
             />
-            {/* Teal color overlay to neutralize red stage lighting */}
-            <div className="absolute inset-0 bg-dark-teal/40" />
-            {/* Gradient edges — blend into panel background on all sides */}
-            <div className="absolute inset-0 bg-gradient-to-r from-dark-teal via-transparent via-20% to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-l from-dark-teal via-transparent via-20% to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-b from-dark-teal via-transparent via-30% to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-dark-teal via-transparent via-30% to-transparent" />
           </motion.div>
         </div>
       </section>

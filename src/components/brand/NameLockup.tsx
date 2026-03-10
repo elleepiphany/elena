@@ -13,7 +13,7 @@ const sizeMap = {
   sm: 'text-sm',
   md: 'text-2xl',
   lg: 'text-4xl',
-  hero: 'text-[2.1rem] sm:text-5xl md:text-7xl lg:text-[7rem] xl:text-[8.5rem]',
+  hero: 'text-[2.1rem] sm:text-5xl md:text-6xl lg:text-[5.5rem] xl:text-[7rem]',
 };
 
 // Negative top margin on "Pinderhughes" to overlap with "Elena"
